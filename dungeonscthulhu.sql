@@ -43,12 +43,11 @@ GRANT ALL PRIVILEGES ON `dungeonscthulhu`.* TO `userDNC`@`localhost` WITH GRANT 
 --
 -- Estructura de tabla para la tabla `characterpj`
 --
-
 CREATE TABLE `characterpj` (
   `id` int(10) NOT NULL,
   `name` varchar(255) NOT NULL,
   `raze` varchar(255) NOT NULL,
-  `gender` varchar(255) NULL,
+  `gender` varchar(255) DEFAULT NULL,
   `level` int(10) NOT NULL,
   `actualExperience` int(20) NOT NULL,
   `cthulhuKnowledge` int(10) NOT NULL,
@@ -73,7 +72,44 @@ CREATE TABLE `characterpj` (
 --
 
 INSERT INTO `characterpj` (`id`, `name`, `raze`, `gender`, `level`, `actualExperience`, `cthulhuKnowledge`, `inspiration`, `actualStress`, `strengthBase`, `dexterityBase`, `constitutionBase`, `inteligenceBase`, `wisdomBase`, `charismaBase`, `velocityBase`, `biography`, `createDate`, `updateDate`, `deleteDate`, `idUser`) VALUES
-(1, 'Lilith Vermillion', 'Humana', 'Mujer',13, 120, 33, 3, 21, 14, 16, 14, 16, 18, 12, 3, 'Nacida en new york en 1897.', '2019-11-17', '2019-11-17', NULL, 1);
+(1, 'Lilith Vermillion', 'Humana', 'Mujer', 13, 120, 33, 3, 21, 14, 16, 14, 16, 18, 12, 3, 'Nacida en new york en 1897.', '2019-11-17', '2019-11-17', NULL, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `characterskill`
+--
+
+CREATE TABLE `characterskill` (
+  `idUser` int(10) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `typeSkill` enum('strength','dexterity','constitution','inteligence','wisdom','charisma') NOT NULL,
+  `level` int(10) NOT NULL,
+  `mark` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `characterskill`
+--
+
+INSERT INTO `characterskill` (`idUser`, `name`, `typeSkill`, `level`, `mark`) VALUES
+(1, 'Alta sociedad', 'charisma', 6, 1),
+(1, 'Buscar libros', 'inteligence', 11, 1),
+(1, 'Ciencias Arcanas', 'inteligence', 18, 4),
+(1, 'Descifrar', 'inteligence', 10, 0),
+(1, 'Descubrir', 'inteligence', 11, 1),
+(1, 'Egipcio Antiguo', 'inteligence', 10, 0),
+(1, 'Historia', 'inteligence', 14, 1),
+(1, 'Ocultar ki', 'dexterity', 18, 0),
+(1, 'Ocultar maná', 'dexterity', 18, 0),
+(1, 'Percepción', 'wisdom', 18, 2),
+(1, 'Percibir Ki', 'wisdom', 20, 1),
+(1, 'Percibir Maná', 'wisdom', 20, 2),
+(1, 'Persuadir', 'charisma', 4, 1),
+(1, 'Psicología', 'wisdom', 16, 0),
+(1, 'Salvación Voluntad', 'wisdom', 4, 0),
+(1, 'Sigilo', 'dexterity', 7, 0),
+(1, 'Sociedad Vampirica', 'charisma', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -87,6 +123,71 @@ CREATE TABLE `object` (
   `description` text DEFAULT NULL,
   `cost` int(12) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `skill`
+--
+
+CREATE TABLE `skill` (
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `type` enum('strength','dexterity','constitution','inteligence','wisdom','charisma') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `skill`
+--
+
+INSERT INTO `skill` (`name`, `description`, `type`) VALUES
+('Abrir cerraduras', 'Habilidad que permite abrir cerraduras de cofres, puertas, cajas fuertes...', 'dexterity'),
+('Acrobacias', 'Habilidad que permite saltar de forma eficiente obstáculos', 'dexterity'),
+('Actuar', 'Finges para obtener un resultado', 'charisma'),
+('Alta sociedad', 'Eres reconocido en la alta sociedad y ellos están predispuestos a confiar en ti', 'charisma'),
+('Atletismo', 'Habilidad que permite escalar,saltar, nadar...', 'strength'),
+('Bestiario', 'Conocimiento sobre bestias magicas', 'inteligence'),
+('Buscar libros', 'Habilidad que permite buscar libros de forma rápida y eficiente', 'inteligence'),
+('Charlatanería', 'Usas tu labia para engatusar temporalmente a quien tu quieras', 'charisma'),
+('Ciencias Arcanas', 'Conocimiento sobre el mundo mágico a través del estudio de libros y documentos', 'inteligence'),
+('Concentración', 'Permite a los lanza-conjuros no perder la concentración al lanzar un hechizo si son atacados', 'constitution'),
+('Conducir', 'Habilidad que permite conducir de forma eficiente', 'inteligence'),
+('Crédito', 'Por tu aspecto,posición social o reconocimiento las personas están mas dispuestas a creerte', 'charisma'),
+('Descifrar', 'Técnicas que permiten el descifrado de criptogramas y ayuda a la traducción de un idioma desconocido', 'inteligence'),
+('Descubrir', 'Es mas fácil descubrir secretos o pistas ocultas', 'inteligence'),
+('Egipcio Antiguo', 'Conocimiento sobre el idioma egipcio antiguo', 'inteligence'),
+('Historia', 'Conocimiento de la historia del mundo', 'inteligence'),
+('Historia magica', 'Conocimiento de la historia del mundo mágico', 'inteligence'),
+('Intimidar', 'Técnicas de intimidación mediante el miedo', 'charisma'),
+('Juego de manos', 'Habilidad que permite robar, o sustraer de forma habilidosa lo que uno desee', 'dexterity'),
+('Mecánica', 'Habilidad que permite reparar y conocer los mecanismos de una maquina', 'inteligence'),
+('Medicina', 'Conocimientos sobre medicina y la capacidad de aplicarlos en el campo', 'wisdom'),
+('Montar', 'Permite montar criaturas', 'dexterity'),
+('Ocultar ki', 'Capacidad para ocultar tu ki del resto del mundo', 'dexterity'),
+('Ocultar maná', 'Capacidad para ocultar tu maná del resto del mundo', 'dexterity'),
+('Ocultar muerte', 'Capacidad para ocultar tu muerte del resto del mundo', 'dexterity'),
+('Ocultar vida', 'Capacidad para ocultar tu vida del resto del mundo', 'dexterity'),
+('Percepción', 'Ve mas allá de lo normal, fijándose en detalles que normalmente pasaría desapercibido, sonidos olores y sensaciones te permiten ver cosas que normalmente no', 'wisdom'),
+('Percibir Ki', 'Capacidad para analizar las fluctuaciones en el ambiente de la energía de ki', 'wisdom'),
+('Percibir Maná', 'Capacidad para analizar las fluctuaciones en el ambiente de la energía de maná', 'wisdom'),
+('Percibir Muerte', 'Capacidad para analizar las fluctuaciones en el ambiente de la energía de muerte', 'wisdom'),
+('Percibir Vida', 'Capacidad para analizar las fluctuaciones en el ambiente de la energía de vida', 'wisdom'),
+('Persuadir', 'Juegas con la mente del adversario consiguiendo hacer lo que tu quieras', 'charisma'),
+('Pintura', 'Habilidad que permite el dibujo de gran calidad', 'inteligence'),
+('Psicología', 'Capacidad de analizar la psique permitiendo detectar mentiras o el estado de animo del analizado', 'wisdom'),
+('Psicoterapia', 'Capacidad de analizar la psique permitiendo sanarla', 'wisdom'),
+('Regatear', 'Convences al adversario de fijar un precio que a ti te convenga mas', 'charisma'),
+('Salvación de carisma', 'Salvación por carisma', 'charisma'),
+('Salvación Destreza', 'Tirada de salvación de destreza.', 'dexterity'),
+('Salvación fortaleza', 'Tirada de salvación de fortaleza', 'constitution'),
+('Salvación fuerza', 'Tirada de salvación de fuerza', 'strength'),
+('Salvación inteligencia', 'Tirada para la salvación de inteligencia', 'inteligence'),
+('Salvación Voluntad', 'Tirada que permite la salvación por voluntad', 'wisdom'),
+('Sigilo', 'Permite pasar desapercibido y sin llamar la atención', 'dexterity'),
+('Sociedad Vampirica', 'Los vampiros te reconocen y confían en ti', 'charisma'),
+('Supervivencia', 'Capacidad mejorada de sobrevivir en situaciones adversas y la capacidad de seguir rastros', 'wisdom'),
+('Tasación', 'Permite conocer el valor de un objeto', 'inteligence'),
+('Trato con animales', 'Ayuda a tratar con animales', 'wisdom');
 
 -- --------------------------------------------------------
 
@@ -122,10 +223,24 @@ ALTER TABLE `characterpj`
   ADD KEY `idUser` (`idUser`);
 
 --
+-- Indices de la tabla `characterskill`
+--
+ALTER TABLE `characterskill`
+  ADD PRIMARY KEY (`idUser`,`name`) USING BTREE,
+  ADD KEY `name` (`name`),
+  ADD KEY `idUser` (`idUser`) USING BTREE;
+
+--
 -- Indices de la tabla `object`
 --
 ALTER TABLE `object`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `skill`
+--
+ALTER TABLE `skill`
+  ADD PRIMARY KEY (`name`);
 
 --
 -- Indices de la tabla `user`
@@ -164,8 +279,13 @@ ALTER TABLE `user`
 --
 ALTER TABLE `characterpj`
   ADD CONSTRAINT `characterpj_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `user` (`id`);
-COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--
+-- Filtros para la tabla `characterskill`
+--
+ALTER TABLE `characterskill`
+  ADD CONSTRAINT `characterskill_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `characterpj` (`id`),
+  ADD CONSTRAINT `characterskill_ibfk_2` FOREIGN KEY (`name`) REFERENCES `skill` (`name`),
+  ADD CONSTRAINT `characterskill_ibfk_3` FOREIGN KEY (`idUser`) REFERENCES `characterpj` (`id`),
+  ADD CONSTRAINT `characterskill_ibfk_4` FOREIGN KEY (`idUser`) REFERENCES `characterpj` (`id`);
+COMMIT;

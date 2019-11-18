@@ -15,11 +15,11 @@ class MESSAGE{
         <div class="MessageContainer">
 
             <div class="MessageString">
-                <H1 class="errorMessage">
+                <h1 class="errorMessage">
                 <?php echo $this->string; ?>
                 <link rel="stylesheet" href="../Locales/MESSAGE.css">
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-                </H1>
+                </h1>
                 <br>
                 <br>
                 <br>
