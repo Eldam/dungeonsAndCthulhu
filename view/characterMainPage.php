@@ -1,5 +1,3 @@
-<?php echo $data["name"]; ?>
-
 <link href="../resources/css/custom.min.css" rel="stylesheet">
 
 <div class="row my-4">

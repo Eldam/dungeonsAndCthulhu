@@ -40,9 +40,6 @@ GRANT ALL PRIVILEGES ON `dungeonscthulhu`.* TO `userDNC`@`localhost` WITH GRANT 
 --
 
 
---
--- Estructura de tabla para la tabla `characterpj`
---
 CREATE TABLE `characterpj` (
   `id` int(10) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -114,6 +111,53 @@ INSERT INTO `characterskill` (`idUser`, `name`, `typeSkill`, `level`, `mark`) VA
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `charactersperk`
+--
+
+CREATE TABLE `charactersperk` (
+  `id` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `idPerk` int(11) NOT NULL,
+  `type` enum('Atribute','Spell','Other','') NOT NULL,
+  `description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `charactersperk`
+--
+
+INSERT INTO `charactersperk` (`id`, `idUser`, `idPerk`, `type`, `description`) VALUES
+(1, 1, 12, 'Other', 'Cuerpo a cuerpo'),
+(2, 1, 9, 'Other', 'Sabiduría'),
+(3, 1, 9, 'Other', 'Sabiduría'),
+(4, 1, 9, 'Other', 'Sabiduría'),
+(5, 1, 9, 'Other', 'Sabiduría'),
+(6, 1, 9, 'Other', 'Sabiduría'),
+(7, 1, 9, 'Other', 'Sabiduría'),
+(8, 1, 9, 'Other', 'Sabiduría'),
+(9, 1, 9, 'Other', 'Sabiduría'),
+(10, 1, 19, 'Other', 'Puño de hierro'),
+(11, 1, 19, 'Other', 'Control'),
+(12, 1, 19, 'Other', 'Tahtib'),
+(13, 1, 19, 'Other', 'Modo sabio'),
+(14, 1, 19, 'Other', 'Ultra instinto'),
+(15, 1, 17, 'Atribute', 'Sabiduría'),
+(16, 1, 17, 'Atribute', 'Sabiduría'),
+(17, 1, 17, 'Atribute', 'Destreza'),
+(18, 1, 17, 'Atribute', 'Destreza'),
+(19, 1, 13, 'Other', 'Cuerpo a cuerpo'),
+(20, 1, 13, 'Other', 'Cuerpo a cuerpo'),
+(21, 1, 13, 'Other', 'Cuerpo a cuerpo'),
+(22, 1, 1, 'Spell', 'Smash'),
+(23, 1, 1, 'Spell', 'Speed'),
+(24, 1, 1, 'Spell', 'Full cowl'),
+(25, 1, 1, 'Spell', 'Smash'),
+(26, 1, 1, 'Atribute', 'Feline vision'),
+(27, 1, 1, 'Atribute', 'Smash');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `object`
 --
 
@@ -123,6 +167,45 @@ CREATE TABLE `object` (
   `description` text DEFAULT NULL,
   `cost` int(12) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `perk`
+--
+
+CREATE TABLE `perk` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `greenCost` int(10) NOT NULL,
+  `blueCost` int(10) NOT NULL,
+  `Knowledge` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `perk`
+--
+
+INSERT INTO `perk` (`id`, `name`, `greenCost`, `blueCost`, `Knowledge`) VALUES
+(1, 'Mejorar hechizo rango < IV', 1, 0, 0),
+(2, 'Mejorar hechizo rango < VI', 2, 0, 0),
+(3, 'Mejorar hechizo rango < IX', 3, 0, 0),
+(4, 'Tirada Salvación +2', 1, 0, 0),
+(5, 'Iniciativa +2', 1, 0, 0),
+(6, 'Velocidad +0.5', 1, 0, 0),
+(7, 'Energía de muerte', 0, 1, 12),
+(8, 'Energía de vida', 0, 1, 12),
+(9, 'Multiplicador ki +0.5 (sabiduría o poder)', 0, 1, 12),
+(10, 'Multiplicador mana +0.5 (sabiduría o inteligencia)', 0, 1, 12),
+(11, 'Rango curación', 1, 0, 12),
+(12, 'Rango ataque (C.c, arma o distancia)', 0, 1, 16),
+(13, 'Rango daño (C.c, arma o distancia)', 1, 0, 12),
+(14, 'Rango ataque hechizo (Arcano,Vida,Muerte)', 0, 1, 16),
+(15, 'Rango daño hechizo (Arcano,Vida,Muerte)', 1, 0, 12),
+(16, 'Incremento atributo principal', 2, 1, 0),
+(17, 'Incremento atributo principal entrenado', 1, 1, 0),
+(18, 'Dote', 2, 2, 20),
+(19, 'Dote entrenada', 1, 2, 20);
 
 -- --------------------------------------------------------
 
@@ -231,9 +314,23 @@ ALTER TABLE `characterskill`
   ADD KEY `idUser` (`idUser`) USING BTREE;
 
 --
+-- Indices de la tabla `charactersperk`
+--
+ALTER TABLE `charactersperk`
+  ADD PRIMARY KEY (`id`,`idUser`,`idPerk`),
+  ADD KEY `idUser` (`idUser`),
+  ADD KEY `idPerk` (`idPerk`);
+
+--
 -- Indices de la tabla `object`
 --
 ALTER TABLE `object`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `perk`
+--
+ALTER TABLE `perk`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -259,10 +356,22 @@ ALTER TABLE `characterpj`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `charactersperk`
+--
+ALTER TABLE `charactersperk`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
 -- AUTO_INCREMENT de la tabla `object`
 --
 ALTER TABLE `object`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `perk`
+--
+ALTER TABLE `perk`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
@@ -288,4 +397,15 @@ ALTER TABLE `characterskill`
   ADD CONSTRAINT `characterskill_ibfk_2` FOREIGN KEY (`name`) REFERENCES `skill` (`name`),
   ADD CONSTRAINT `characterskill_ibfk_3` FOREIGN KEY (`idUser`) REFERENCES `characterpj` (`id`),
   ADD CONSTRAINT `characterskill_ibfk_4` FOREIGN KEY (`idUser`) REFERENCES `characterpj` (`id`);
+
+--
+-- Filtros para la tabla `charactersperk`
+--
+ALTER TABLE `charactersperk`
+  ADD CONSTRAINT `charactersperk_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `characterpj` (`id`),
+  ADD CONSTRAINT `charactersperk_ibfk_2` FOREIGN KEY (`idPerk`) REFERENCES `perk` (`id`);
 COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
