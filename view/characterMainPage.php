@@ -1,7 +1,7 @@
 <link href="../resources/css/custom.min.css" rel="stylesheet">
 
 <div class="row my-4">
-    <div class="tile_count col-xl-12 py-4 bg-dark">
+    <div class="tile_count col-xl-12 py-4 bg-dark text-molon">
         <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 tile_stats_count">
             <span class="count_top"><i class="fas fa-fist-raised"></i> Fuerza</span>
             <div class="count <?php if ($data["strengthBase"] > 12) {

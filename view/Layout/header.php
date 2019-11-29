@@ -10,6 +10,7 @@
     <link href="../resources/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="../resources/css/lateralBar.css">
     <link rel="stylesheet" href="../resources/css/core.css">
+
 </head>
 
 <body class="bg-secondary">
@@ -27,16 +28,16 @@
                     </div>
                 </div>
                 <div class="sidebar-header">
-                    <!-- <div class="user-pic">
-                        <img class="img-responsive img-rounded" id="img-lateral-bar" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg" alt="User picture">
-                    </div> -->
+                    <div class="user-pic">
+                        <img class="img-responsive img-rounded" id="img-lateral-bar" src="../resources/img/1.jpg" alt="User picture">
+                    </div>
                     <div class="user-info">
                         <h5 class="user-name"><?php echo $_SESSION["actualCharacterName"] ?></h5>
-                        <span class="user-role">Raza: <span class="text-primary"><?php echo $_SESSION["actualCharacterRaze"] ?></span></span>
-                        <span class="user-role">Genero: <span class="text-primary"><?php echo $_SESSION["actualCharacterGender"] ?></span></span>
-                        <span class="user-role">Nivel: <span class="text-primary"><?php echo $_SESSION["actualCharacterLvl"] ?></span></span>
+                        <span class="user-role">Raza: <span class="text-ceruleo"><?php echo $_SESSION["actualCharacterRaze"] ?></span></span>
+                        <span class="user-role">Genero: <span class="text-ceruleo"><?php echo $_SESSION["actualCharacterGender"] ?></span></span>
+                        <span class="user-role">Nivel: <span class="text-ceruleo"><?php echo $_SESSION["actualCharacterLvl"] ?></span></span>
                         <span class="user-status">
-                            <span>Experiencia Actual: </span><span class="text-danger"><?php echo $_SESSION["actualCharacterExp"] ?></span>
+                            <span>Experiencia Actual: </span><span class="text-aqua"><?php echo $_SESSION["actualCharacterExp"] ?></span>
                         </span>
                     </div>
                 </div>

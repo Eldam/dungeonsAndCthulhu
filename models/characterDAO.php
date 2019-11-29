@@ -26,10 +26,17 @@ class characterDAO
 
     }
 
+    function getPerks(){
+        $sql = "SELECT * FROM charactersPerk WHERE idUser=$this->id";
+        $resultado = mysqli_query($this->mysqli, $sql);
+        if($resultado){
+            return $resultado;
+        }
+        return "Error";
+    }
+
     function setId($id){
         $this->id = $id;
     }
-
-
 
 }
