@@ -29,7 +29,7 @@
                 </div>
                 <div class="sidebar-header">
                     <div class="user-pic">
-                        <img class="img-responsive img-rounded" id="img-lateral-bar" src="../resources/img/1.jpg" alt="User picture">
+                        <img class="img-responsive img-rounded" id="img-lateral-bar" src="../resources/img/avatar/<?= $_SESSION["actualCharacterId"] ?>.jpg" alt="User picture">
                     </div>
                     <div class="user-info">
                         <h5 class="user-name"><?php echo $_SESSION["actualCharacterName"] ?></h5>
@@ -187,6 +187,12 @@
                                 <span>Calendario</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="../core/characterSelector.php">
+                                <i class="fas fa-user-friends"></i>
+                                <span>Seleccionar Personaje</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
@@ -207,7 +213,7 @@
                     <i class="fa fa-cog"></i>
                     <span class="badge-sonar"></span>
                 </a>
-                <a href="#">
+                <a href="../core/logOut.php">
                     <i class="fa fa-power-off"></i>
                 </a>
             </div>

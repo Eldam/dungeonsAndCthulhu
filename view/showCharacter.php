@@ -199,7 +199,7 @@
                     </h5>
                 </div>
 
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div id="collapseOne" class="collapse col-xl-6 col-md-12" aria-labelledby="headingOne" data-parent="#accordion">
                     <table class="table text-white">
                         <thead>
                             <tr>

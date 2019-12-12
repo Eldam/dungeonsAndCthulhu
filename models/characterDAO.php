@@ -18,6 +18,14 @@ class characterDAO
         include_once 'accesDB.php';
         $this->mysqli = ConnectDB();
     }
+    function getCharacterByUser ($idUser){
+
+        $sql = "SELECT * from characterpj WHERE idUser='$idUser'";
+        $toRet = $this->mysqli->query($sql);
+        return $toRet;
+
+    }
+
     function getCharacter (){
 
         $sql = "SELECT * from characterpj WHERE id=$this->id";
