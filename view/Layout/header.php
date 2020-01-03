@@ -10,6 +10,7 @@
     <link href="../resources/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="../resources/css/lateralBar.css">
     <link rel="stylesheet" href="../resources/css/core.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 
@@ -41,20 +42,7 @@
                         </span>
                     </div>
                 </div>
-                <!-- sidebar-header  -->
-                <div class="sidebar-search">
-                    <div>
-                        <div class="input-group">
-                            <input type="text" class="form-control search-menu" placeholder="Search...">
-                            <div class="input-group-append">
-                                <span class="input-group-text">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- sidebar-search  -->
+<!-- menu personaje -->
                 <div class="sidebar-menu">
                     <ul>
                         <li class="header-menu">
@@ -141,7 +129,7 @@
                                         <a href="#">Obtenidos</a>
                                     </li>
                                     <li>
-                                        <a href="#">Todos los Objetos</a>
+                                        <a href="../core/showAllObjects.php">Todos los Objetos</a>
                                     </li>
                                     <li>
                                         <a href="#">Pociones</a>

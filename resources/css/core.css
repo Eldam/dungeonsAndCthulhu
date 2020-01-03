@@ -23,3 +23,17 @@ body, html {
     max-width: 400px!important;
     max-height: 400px!important;
   }
+
+  .hide{
+    display: none!important;
+  }
+
+  .modal-content{
+    background-color: #3a3f48!important;
+    color: #fff;
+    
+  }
+  input, .custom-file-label, select, textarea { 
+    color: #000!important;
+    background: #bec2ca!important; 
+  }
