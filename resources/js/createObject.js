@@ -9,7 +9,7 @@ $(function () {
 
 
     $("#primalSelect").change(function () {
-        if ($("#primalSelect option:selected").val() == "") {
+        if ($("#primalSelect option:selected").val() == "0") {
             $("#primalDiv").addClass("hide");
         } else {
             $("#primalDiv").removeClass("hide");
@@ -63,24 +63,115 @@ function uploadObject() {
         typeCoin: $("#typeCoin").val(),
         weight: $("#weight").val(),
         volume: $("#volume").val(),
-        limitationStrength:$("#limitationStrength").val(),
-        limitationDex:$("#limitationDex").val(),
-        limitationCons:$("#limitationCons").val(),
-        limitationInt:$("#limitationInt").val(),
-        limitationWis:$("#limitationWis").val(),
+        limitationStrength: $("#limitationStrength").val(),
+        limitationDex: $("#limitationDex").val(),
+        limitationCons: $("#limitationCons").val(),
+        limitationInt: $("#limitationInt").val(),
+        limitationWis: $("#limitationWis").val(),
         typeObject: $("#objetOption option:selected").val(),
+        typePrimal: $("#primalSelect").val(),
         objectData: {},
         primalData: {}
     }
 
-    //TODO RELLENAR OBJECTDATA Y PRIMALDATA
+    //RELLENA OBJECTDATA
+    switch (data.typeObject) {
+        case "armor":
+            data.objectData = {
+                ca: $("#ca").val(),
+                type: $("#typeArmor").val()
+            }
+            break;
+        case "accesory":
+            data.objectData = {
+                cost: $("#costAccesory").val(),
+                durability: $("#durabilityAccesory").val(),
+                duration: $("#durationAccesory").val(),
+                effect: $("#effectAccesory").val()
+            }
+            break;
+        case "weapon":
+            data.objectData = {
+                damage: $("#damage").val(),
+                critical: $("#critical").val(),
+                hand: $("#hand").val(),
+                subtle: $("#subtle").val(),
+                type: $("#typeWeapon").val(),
+                scope: $("#scope").val()
+            }
+            break;
+        case "potion":
+            data.objectData = {
+                effect: $("#effectPotion").val(),
+                expiration: $("#expirationPotion").val(),
+                duration: $("#durationPotion").val(),
+                type: $("#typePotion").val()
+            }
+            break;
+        case "food":
+            data.objectData = {
+                duration: $("#durationFood").val(),
+                effect: $("#effectFood").val(),
+                expiration: $("#expirationFood").val()
+            }
+            break;
+        case "magicStone":
+            data.objectData = {
+                capacity: $("#capacityMS").val(),
+                efficency: $("#efficencyMS").val()
+            }
+            break;
+        default:
+            break;
+    }
+
+    //RELLENA PRIMALDATA
+
+    if (data["typePrimal"] == 1) {
+        data.primalData = {
+            strength: $("#strength").val(),
+            dexterity: $("#dexterity").val(),
+            constitution: $("#constitution").val(),
+            inteligence: $("#inteligence").val(),
+            wisdom: $("#wisdom").val(),
+            charisma: $("#charisma").val(),
+            synchronizationCost: $("#synchronizationCost").val(),
+            TS: $("#TS").val(),
+            max: $("#max").val(),
+            min: $("#min").val(),
+            Ratk: $("#Ratk").val(),
+            Rdamage: $("#Rdamage").val(),
+            effect: $("#effect").val(),
+            RTSalv: $("#RTSalv").val(),
+            initiative: $("#initiative").val(),
+            speed: $("#speed").val(),
+            deathEnergy: $("#deathEnergy").val(),
+            lifeEnergy: $("#lifeEnergy").val(),
+            kiMulti: $("#kiMulti").val(),
+            manaMulti: $("#manaMulti").val(),
+            rAtkSpell: $("#rAtkSpell").val(),
+            rDmgSpell: $("#rDmgSpell").val()
+        }
+    }
+    //Envia json
 
     $.ajax({
         url: './createObject.php',
         data: data,
         type: "POST",
         success: function (respuesta) {
-            console.log(respuesta);
+            try{
+                respuesta = JSON.parse(respuesta);
+                if (respuesta.status) {
+                    showSucces(respuesta["mensaje"]);
+                    $("#createObjectModal").modal('hide');
+                } else {
+                    showError(respuesta["mensaje"]);
+                }
+                
+            }catch{
+                showError("Se ha producido un error");
+            }
         },
         error: function () {
             console.log("No se ha podido obtener la información");
@@ -90,5 +181,14 @@ function uploadObject() {
 
 
 function showError(text) {
+    $("#dangerAlert").text(text);
+    $("#dangerAlert").removeClass("hide");
+    setTimeout(function(){$("#dangerAlert").addClass("hide");}, 5000);
+}
 
+
+function showSucces(text) {
+    $("#succesAlert").text(text);
+    $("#succesAlert").removeClass("hide");
+    setTimeout(function(){$("#succesAlert").addClass("hide");}, 5000);
 }

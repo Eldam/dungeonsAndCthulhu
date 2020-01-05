@@ -31,7 +31,7 @@ class characterSkillDAO
 
         $sql = "SELECT * from characterSkill WHERE idUser=$this->id";
         $resultado = mysqli_query($this->mysqli, $sql);
-        if($resultado){
+        if ($resultado) {
             return $resultado;
         }
         return "Error";
@@ -41,7 +41,7 @@ class characterSkillDAO
 
         $sql = "SELECT * from characterSkill WHERE idUser=$this->id and typeSkill='strength'";
         $resultado = mysqli_query($this->mysqli, $sql);
-        if($resultado){
+        if ($resultado) {
             return $resultado;
         }
         return "Error";
@@ -51,7 +51,7 @@ class characterSkillDAO
 
         $sql = "SELECT * from characterSkill WHERE idUser=$this->id and typeSkill='dexterity'";
         $resultado = mysqli_query($this->mysqli, $sql);
-        if($resultado){
+        if ($resultado) {
             return $resultado;
         }
         return "Error";
@@ -61,7 +61,7 @@ class characterSkillDAO
 
         $sql = "SELECT * from characterSkill WHERE idUser=$this->id and typeSkill='constitution'";
         $resultado = mysqli_query($this->mysqli, $sql);
-        if($resultado){
+        if ($resultado) {
             return $resultado;
         }
         return "Error";
@@ -71,7 +71,7 @@ class characterSkillDAO
 
         $sql = "SELECT * from characterSkill WHERE idUser=$this->id and typeSkill='inteligence'";
         $resultado = mysqli_query($this->mysqli, $sql);
-        if($resultado){
+        if ($resultado) {
             return $resultado;
         }
         return "Error";
@@ -80,8 +80,8 @@ class characterSkillDAO
     {
 
         $sql = "SELECT * from characterSkill WHERE idUser=$this->id and typeSkill='wisdom'";
-        $resultado = mysqli_query($this->mysqli,$sql);
-        if($resultado){
+        $resultado = mysqli_query($this->mysqli, $sql);
+        if ($resultado) {
             return $resultado;
         }
         return "Error";
@@ -91,7 +91,7 @@ class characterSkillDAO
 
         $sql = "SELECT * from characterSkill WHERE idUser=$this->id and typeSkill='charisma'";
         $resultado = mysqli_query($this->mysqli, $sql);
-        if($resultado){
+        if ($resultado) {
             return $resultado;
         }
         return "Error";

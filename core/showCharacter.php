@@ -35,6 +35,7 @@ else {
     $_SESSION["actualCharacterRaze"] = $data["raze"];
     $_SESSION["actualCharacterGender"] = $data["gender"];
     //MODIFICAMOS DATOS
+    $data = calculatePerkAttribute($data,$dataPerk);
     $modifierArray = calculateModify($data);
     $characterSkillDAO = new characterSkillDAO();
     $characterSkillDAO->setId($_SESSION["actualCharacterId"]);

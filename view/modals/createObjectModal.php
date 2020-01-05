@@ -32,13 +32,13 @@
                         <div class="col-6">
                             <label for="price" class="col-form-label">Precio</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="price">
+                                <input type="number" class="form-control" id="price">
                             </div>
                         </div>
                         <div class="col-6">
                             <label for="typeCoin" class="col-form-label">Tipo de moneda</label>
                             <div class="col-12">
-                                <select class="custom-select">
+                                <select class="custom-select" id="typeCoin">
                                     <option value="gem">Gema</option>
                                     <option value="Money">Moneda</option>
                                     <option value="">Desconocido</option>
@@ -50,43 +50,43 @@
                         <div class="form-group col-6">
                             <label for="weight" class="col-form-label">Peso</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="weight">
+                                <input type="number" class="form-control" id="weight">
                             </div>
                         </div>
                         <div class="form-group col-6">
                             <label for="volume" class="col-form-label">Volumen</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="volume">
+                                <input type="number" class="form-control" id="volume">
                             </div>
                         </div>
                         <div class="form-group col-6">
                             <label for="limitationStrength" class="col-form-label">Limitación de fuerza</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="limitationStrength">
+                                <input type="number" class="form-control" id="limitationStrength">
                             </div>
                         </div>
                         <div class="form-group col-6">
                             <label for="limitationDex" class="col-form-label">Limitación de destreza</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="limitationDex">
+                                <input type="number" class="form-control" id="limitationDex">
                             </div>
                         </div>
                         <div class="form-group col-6">
                             <label for="limitationCons" class="col-form-label">Limitación de constitución</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="limitationCons">
+                                <input type="number" class="form-control" id="limitationCons">
                             </div>
                         </div>
                         <div class="form-group col-6">
                             <label for="limitationInt" class="col-form-label">Limitación de inteligencia</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="limitationInt">
+                                <input type="number" class="form-control" id="limitationInt">
                             </div>
                         </div>
                         <div class="form-group col-6">
                             <label for="limitationWis" class="col-form-label">Limitación de sabiduría</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="limitationWis">
+                                <input type="number" class="form-control" id="limitationWis">
                             </div>
                         </div>
                         <div class="form-group col-6">
@@ -100,10 +100,10 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="limitationWis" class="col-form-label">Tipo de objeto</label>
+                        <label for="objetOption" class="col-form-label">Tipo de objeto</label>
                         <div class="col-12">
                             <select id="objetOption" class="custom-select">
-                                <option selected>Corriente</option>
+                                <option value="normal"selected>Corriente</option>
                                 <option value="armor">Armadura</option>
                                 <option value="accesory">Accesorio</option>
                                 <option value="weapon">Arma</option>
@@ -117,27 +117,27 @@
                     <div id="accesory" class="hide objetDiv row">
                         <hr>
                         <div class="form-group col-6">
-                            <label for="cost" class="col-form-label">Coste de uso</label>
+                            <label for="costAccesory" class="col-form-label">Coste de uso</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="cost">
+                                <input type="number" class="form-control" id="costAccesory">
                             </div>
                         </div>
                         <div class="form-group col-6">
-                            <label for="durability" class="col-form-label">Durabilidad</label>
+                            <label for="durabilityAccesory" class="col-form-label">Durabilidad</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="durability">
+                                <input type="number" class="form-control" id="durabilityAccesory">
                             </div>
                         </div>
                         <div class="form-group col-6">
-                            <label for="duration" class="col-form-label">Duración</label>
+                            <label for="durationAccesory" class="col-form-label">Duración</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="duration">
+                                <input type="number" class="form-control" id="durationAccesory">
                             </div>
                         </div>
                         <div class="form-group col-6">
-                            <label for="effect" class="col-form-label">Efecto</label>
+                            <label for="effectAccesory" class="col-form-label">Efecto</label>
                             <div class="col-12">
-                                <textarea rows="5" class="form-control" id="effect"></textarea>
+                                <textarea rows="5" class="form-control" id="effectAccesory"></textarea>
                             </div>
                         </div>
                     </div>
@@ -146,19 +146,19 @@
                         <div class="form-group col-6">
                             <label for="ca" class="col-form-label">Clase de Armadura</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="ca">
+                                <input type="number" class="form-control" id="ca">
                             </div>
                         </div>
                         <div class="form-group col-6">
-                            <label for="type" class="col-form-label">Tipo de armadura</label>
+                            <label for="typeArmor" class="col-form-label">Tipo de armadura</label>
                             <div class="col-12">
-                                <select class="custom-select">
+                                <select class="custom-select" id="typeArmor">
                                     <option value="helmet">Casco</option>
                                     <option value="boots">Botas</option>
                                     <option value="gauntlets">guanteletes</option>
                                     <option value="shoulderPads">Hombreras</option>
                                     <option value="pants">pantalones</option>
-                                    <option value="brazalete">armband</option>
+                                    <option value="armband">brazalete</option>
                                     <option value="clothes">Ropa generica</option>
                                     <option value="cloak">Capa</option>
                                 </select>
@@ -168,63 +168,63 @@
                     <div id="food" class="hide objetDiv row">
                         <hr>
                         <div class="form-group col-12">
-                            <label for="effect" class="col-form-label">efecto</label>
+                            <label for="effectFood" class="col-form-label">efecto</label>
                             <div class="col-12">
-                                <textarea rows="5" class="form-control" id="effect"></textarea>
+                                <textarea rows="5" class="form-control" id="effectFood"></textarea>
                             </div>
                         </div>
                         <div class="form-group col-6">
-                            <label for="expiration" class="col-form-label">Caducidad</label>
+                            <label for="expirationFood" class="col-form-label">Caducidad</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="expiration">
+                                <input type="number" class="form-control" id="expirationFood">
                             </div>
                         </div>
                         <div class="form-group col-6">
-                            <label for="duration" class="col-form-label">Duración</label>
+                            <label for="durationFood" class="col-form-label">Duración</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="duration">
+                                <input type="number" class="form-control" id="durationFood">
                             </div>
                         </div>
                     </div>
                     <div id="magicStone" class="hide objetDiv row">
                         <hr>
                         <div class="form-group col-6">
-                            <label for="capacity" class="col-form-label">Capacidad</label>
+                            <label for="capacityMS" class="col-form-label">Capacidad</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="capacity">
+                                <input type="number" class="form-control" id="capacityMS">
                             </div>
                         </div>
                         <div class="form-group col-6">
-                            <label for="efficency" class="col-form-label">eficiencia</label>
+                            <label for="efficencyMS" class="col-form-label">eficiencia</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="efficency">
+                                <input type="number" class="form-control" id="efficencyMS">
                             </div>
                         </div>
                     </div>
                     <div id="potion" class="hide objetDiv row">
                         <hr>
                         <div class="form-group col-6">
-                            <label for="effect" class="col-form-label">efecto</label>
+                            <label for="effectPotion" class="col-form-label">efecto</label>
                             <div class="col-12">
-                                <textarea rows="5" class="form-control" id="effect"></textarea>
+                                <textarea rows="5" class="form-control" id="effectPotion"></textarea>
                             </div>
                         </div>
                         <div class="form-group col-6">
-                            <label for="expiration" class="col-form-label">Caducidad</label>
+                            <label for="expirationPotion" class="col-form-label">Caducidad</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="expiration">
+                                <input type="number" class="form-control" id="expirationPotion">
                             </div>
                         </div>
                         <div class="form-group col-6">
-                            <label for="duration" class="col-form-label">Duración</label>
+                            <label for="durationPotion" class="col-form-label">Duración</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="duration">
+                                <input type="number" class="form-control" id="durationPotion">
                             </div>
                         </div>
                         <div class="form-group col-6">
-                            <label for="type" class="col-form-label">Tipo de poción</label>
+                            <label for="typePotion" class="col-form-label">Tipo de poción</label>
                             <div class="col-12">
-                                <select class="custom-select">
+                                <select class="custom-select" id="typePotion">
                                     <option value="other">Otros</option>
                                     <option value="heal">Curación</option>
                                     <option value="posion">Veneno</option>
@@ -240,34 +240,34 @@
                         <div class="form-group col-6">
                             <label for="damage" class="col-form-label">Daño</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="damage">
+                                <input type="number" class="form-control" id="damage">
                             </div>
                         </div>
                         <div class="form-group col-6">
                             <label for="critical" class="col-form-label">Crítico</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="critical">
+                                <input type="number" class="form-control" id="critical">
                             </div>
                         </div>
                         <div class="form-group col-6">
                             <label for="hand" class="col-form-label">Manos necesarias</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="critical">
+                                <input type="number" class="form-control" id="hand">
                             </div>
                         </div>
                         <div class="form-group col-6">
-                            <label for="duration" class="col-form-label">Sutil</label>
+                            <label for="subtle" class="col-form-label">Sutil</label>
                             <div class="col-12">
-                                <select class="custom-select">
+                                <select class="custom-select" id="subtle">
                                     <option value="no">No</option>
                                     <option value="yes">Si</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group col-6">
-                            <label for="type" class="col-form-label">Tipo de arma</label>
+                            <label for="typeWeapon" class="col-form-label">Tipo de arma</label>
                             <div class="col-12">
-                                <select class="custom-select">
+                                <select class="custom-select" id="typeWeapon">
                                     <option value="distance">Distancia</option>
                                     <option value="overwhelming">Contundente</option>
                                     <option value="edge">filo</option>
@@ -277,16 +277,16 @@
                         <div class="form-group col-6">
                             <label for="scope" class=" col-form-label">Alcance</label>
                             <div class="col-12">
-                                <input type="text" class="form-control" id="scope">
+                                <input type="number" class="form-control" id="scope">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="limitationWis" class=" col-form-label">Primigenio</label>
+                        <label for="primalSelect" class=" col-form-label">Primigenio</label>
                         <div class="col-12">
                             <select id="primalSelect">
-                                <option value="">No</option>
-                                <option value="primal">Si</option>
+                                <option value="0">No</option>
+                                <option value="1">Si</option>
                             </select>
                         </div>
                     </div>

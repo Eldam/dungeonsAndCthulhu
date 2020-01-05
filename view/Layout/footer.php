@@ -9,7 +9,15 @@
 
 
 
+<div class="alert alert-success hide" style="position: fixed;bottom: 0;text-align: center;width:100%;z-index:100;" id="succesAlert" role="alert">
 
+</div>
+<div class="alert alert-danger hide" style="position: fixed;bottom: 0;text-align: center;width:100%;z-index:100;" id="dangerAlert" role="alert">
+
+</div>
+<div class="alert alert-warning hide" style="position: fixed;bottom: 0;text-align: center;width:100%;z-index:100;" id="warningAlert" role="alert">
+
+</div>
 
 
 
