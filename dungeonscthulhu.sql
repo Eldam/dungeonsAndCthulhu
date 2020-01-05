@@ -40,6 +40,46 @@ GRANT ALL PRIVILEGES ON `dungeonscthulhu`.* TO `userDNC`@`localhost` WITH GRANT 
 --
 
 
+CREATE TABLE `accesory` (
+  `idObj` int(11) NOT NULL,
+  `cost` int(11) DEFAULT NULL,
+  `effect` text DEFAULT NULL,
+  `duration` int(11) DEFAULT NULL,
+  `durability` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `armor`
+--
+
+CREATE TABLE `armor` (
+  `idObj` int(11) NOT NULL,
+  `ca` int(11) NOT NULL,
+  `type` enum('helmet','boots','gauntlets','shoulderPads','pants','armband','clothes','cloak') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `characterobject`
+--
+
+CREATE TABLE `characterobject` (
+  `id` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `idObject` int(11) NOT NULL,
+  `purchaseDate` date NOT NULL,
+  `type` enum('accesory','armor','food','magicStone','potion','weapon') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `characterpj`
+--
+
 CREATE TABLE `characterpj` (
   `id` int(10) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -69,7 +109,8 @@ CREATE TABLE `characterpj` (
 --
 
 INSERT INTO `characterpj` (`id`, `name`, `raze`, `gender`, `level`, `actualExperience`, `cthulhuKnowledge`, `inspiration`, `actualStress`, `strengthBase`, `dexterityBase`, `constitutionBase`, `inteligenceBase`, `wisdomBase`, `charismaBase`, `velocityBase`, `biography`, `createDate`, `updateDate`, `deleteDate`, `idUser`) VALUES
-(1, 'Lilith Vermillion', 'Humana', 'Mujer', 13, 120, 33, 3, 21, 14, 16, 14, 16, 18, 12, 3, 'Nacida en new york en 1897.', '2019-11-17', '2019-11-17', NULL, 1);
+(1, 'Lilith Vermillion', 'Humana', 'Mujer', 13, 120, 33, 3, 21, 14, 16, 14, 16, 18, 12, 3, 'Nacida en new york en 1897.', '2019-11-17', '2019-11-17', NULL, 1),
+(2, 'prueba prueba', 'Humana', 'Mujer', 13, 120, 33, 3, 21, 14, 16, 14, 16, 18, 12, 3, 'Nacida en new york en 1897.', '2019-11-17', '2019-11-17', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -118,7 +159,7 @@ CREATE TABLE `charactersperk` (
   `id` int(11) NOT NULL,
   `idUser` int(11) NOT NULL,
   `idPerk` int(11) NOT NULL,
-  `type` enum('Atribute','Spell','Other','') NOT NULL,
+  `type` enum('Atribute','Spell','Xki','Xmana','AcuLife','AcuDeath','RDmg','RAtk','RHeal','RNecro','Pasive','Other') NOT NULL,
   `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -127,33 +168,58 @@ CREATE TABLE `charactersperk` (
 --
 
 INSERT INTO `charactersperk` (`id`, `idUser`, `idPerk`, `type`, `description`) VALUES
-(1, 1, 12, 'Other', 'Cuerpo a cuerpo'),
-(2, 1, 9, 'Other', 'Sabiduría'),
-(3, 1, 9, 'Other', 'Sabiduría'),
-(4, 1, 9, 'Other', 'Sabiduría'),
-(5, 1, 9, 'Other', 'Sabiduría'),
-(6, 1, 9, 'Other', 'Sabiduría'),
-(7, 1, 9, 'Other', 'Sabiduría'),
-(8, 1, 9, 'Other', 'Sabiduría'),
-(9, 1, 9, 'Other', 'Sabiduría'),
-(10, 1, 19, 'Other', 'Puño de hierro'),
-(11, 1, 19, 'Other', 'Control'),
-(12, 1, 19, 'Other', 'Tahtib'),
-(13, 1, 19, 'Other', 'Modo sabio'),
-(14, 1, 19, 'Other', 'Ultra instinto'),
+(1, 1, 12, 'RAtk', 'Cuerpo a cuerpo'),
+(2, 1, 9, 'Xki', 'Sabiduría'),
+(3, 1, 9, 'Xki', 'Sabiduría'),
+(4, 1, 9, 'Xki', 'Sabiduría'),
+(5, 1, 9, 'Xki', 'Sabiduría'),
+(6, 1, 9, 'Xki', 'Sabiduría'),
+(7, 1, 9, 'Xki', 'Sabiduría'),
+(8, 1, 9, 'Xki', 'Sabiduría'),
+(9, 1, 9, 'Xki', 'Sabiduría'),
+(10, 1, 19, 'Pasive', 'Puño de hierro'),
+(11, 1, 19, 'Pasive', 'Control'),
+(12, 1, 19, 'Pasive', 'Tahtib'),
+(13, 1, 19, 'Pasive', 'Modo sabio'),
+(14, 1, 19, 'Pasive', 'Ultra instinto'),
 (15, 1, 17, 'Atribute', 'Sabiduría'),
 (16, 1, 17, 'Atribute', 'Sabiduría'),
 (17, 1, 17, 'Atribute', 'Destreza'),
 (18, 1, 17, 'Atribute', 'Destreza'),
-(19, 1, 13, 'Other', 'Cuerpo a cuerpo'),
-(20, 1, 13, 'Other', 'Cuerpo a cuerpo'),
-(21, 1, 13, 'Other', 'Cuerpo a cuerpo'),
+(19, 1, 13, 'RDmg', 'Cuerpo a cuerpo'),
+(20, 1, 13, 'RDmg', 'Cuerpo a cuerpo'),
+(21, 1, 13, 'RDmg', 'Cuerpo a cuerpo'),
 (22, 1, 1, 'Spell', 'Smash'),
 (23, 1, 1, 'Spell', 'Speed'),
 (24, 1, 1, 'Spell', 'Full cowl'),
 (25, 1, 1, 'Spell', 'Smash'),
-(26, 1, 1, 'Atribute', 'Feline vision'),
-(27, 1, 1, 'Atribute', 'Smash');
+(26, 1, 1, 'Spell', 'Feline vision'),
+(27, 1, 1, 'Spell', 'Smash');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `food`
+--
+
+CREATE TABLE `food` (
+  `idObj` int(11) NOT NULL,
+  `effect` text NOT NULL,
+  `duration` int(11) NOT NULL,
+  `expiration` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `magicstone`
+--
+
+CREATE TABLE `magicstone` (
+  `idObj` int(11) NOT NULL,
+  `capacity` int(11) NOT NULL,
+  `efficiency` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -162,10 +228,20 @@ INSERT INTO `charactersperk` (`id`, `idUser`, `idPerk`, `type`, `description`) V
 --
 
 CREATE TABLE `object` (
-  `id` int(10) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text DEFAULT NULL,
-  `cost` int(12) DEFAULT NULL
+  `price` int(11) DEFAULT NULL,
+  `typeCoin` enum('gem','Money') DEFAULT NULL,
+  `weight` int(11) DEFAULT NULL,
+  `volume` int(11) DEFAULT NULL,
+  `limitationStrength` int(11) DEFAULT NULL,
+  `limitationDex` int(11) DEFAULT NULL,
+  `limitationCons` int(11) DEFAULT NULL,
+  `limitationInt` int(11) DEFAULT NULL,
+  `limitationWis` int(11) DEFAULT NULL,
+  `typeObject` enum('normal','armor','accesory','weapon','potion','food','magicStone') NOT NULL,
+  `primal` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -206,6 +282,52 @@ INSERT INTO `perk` (`id`, `name`, `greenCost`, `blueCost`, `Knowledge`) VALUES
 (17, 'Incremento atributo principal entrenado', 1, 1, 0),
 (18, 'Dote', 2, 2, 20),
 (19, 'Dote entrenada', 1, 2, 20);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `potion`
+--
+
+CREATE TABLE `potion` (
+  `idObj` int(11) NOT NULL,
+  `effect` text NOT NULL,
+  `duration` int(11) NOT NULL,
+  `expiration` int(11) DEFAULT NULL,
+  `type` enum('heal','poison','restoration','effect','hidden','other') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `primal`
+--
+
+CREATE TABLE `primal` (
+  `idObj` int(11) NOT NULL,
+  `strength` int(11) DEFAULT NULL,
+  `dexterity` int(11) DEFAULT NULL,
+  `constitution` int(11) DEFAULT NULL,
+  `inteligence` int(11) DEFAULT NULL,
+  `wisdom` int(11) DEFAULT NULL,
+  `charisma` int(11) DEFAULT NULL,
+  `synchronizationCost` int(11) NOT NULL,
+  `TS` int(11) NOT NULL,
+  `max` int(11) NOT NULL,
+  `min` int(11) DEFAULT NULL,
+  `Ratk` int(11) DEFAULT NULL,
+  `Rdamage` int(11) DEFAULT NULL,
+  `effect` text DEFAULT NULL,
+  `RTSalv` int(11) DEFAULT NULL,
+  `initiative` int(11) DEFAULT NULL,
+  `speed` int(11) DEFAULT NULL,
+  `deathEnergy` int(11) DEFAULT NULL,
+  `lifeEnergy` int(11) DEFAULT NULL,
+  `kiMulti` int(11) DEFAULT NULL,
+  `manaMulti` int(11) DEFAULT NULL,
+  `rAtkSpell` int(11) DEFAULT NULL,
+  `rDmgSpell` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -294,9 +416,45 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `name`, `password`, `createDate`, `updateDate`, `deleteDate`) VALUES
 (1, 'Eldam', '4486d3c4678aa2be330c2424d4fd2673', '2019-11-17', '2019-11-17', NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `weapon`
+--
+
+CREATE TABLE `weapon` (
+  `idObj` int(11) NOT NULL,
+  `damage` int(11) NOT NULL,
+  `critical` int(11) NOT NULL,
+  `type` enum('distance','overwhelming','edge') NOT NULL,
+  `hand` int(11) NOT NULL,
+  `subtle` tinyint(1) NOT NULL,
+  `scope` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `accesory`
+--
+ALTER TABLE `accesory`
+  ADD PRIMARY KEY (`idObj`);
+
+--
+-- Indices de la tabla `armor`
+--
+ALTER TABLE `armor`
+  ADD PRIMARY KEY (`idObj`);
+
+--
+-- Indices de la tabla `characterobject`
+--
+ALTER TABLE `characterobject`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idUser` (`idUser`),
+  ADD KEY `idObject` (`idObject`);
 
 --
 -- Indices de la tabla `characterpj`
@@ -322,6 +480,18 @@ ALTER TABLE `charactersperk`
   ADD KEY `idPerk` (`idPerk`);
 
 --
+-- Indices de la tabla `food`
+--
+ALTER TABLE `food`
+  ADD PRIMARY KEY (`idObj`);
+
+--
+-- Indices de la tabla `magicstone`
+--
+ALTER TABLE `magicstone`
+  ADD PRIMARY KEY (`idObj`);
+
+--
 -- Indices de la tabla `object`
 --
 ALTER TABLE `object`
@@ -332,6 +502,18 @@ ALTER TABLE `object`
 --
 ALTER TABLE `perk`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `potion`
+--
+ALTER TABLE `potion`
+  ADD PRIMARY KEY (`idObj`);
+
+--
+-- Indices de la tabla `primal`
+--
+ALTER TABLE `primal`
+  ADD PRIMARY KEY (`idObj`);
 
 --
 -- Indices de la tabla `skill`
@@ -346,14 +528,26 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `weapon`
+--
+ALTER TABLE `weapon`
+  ADD PRIMARY KEY (`idObj`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `characterobject`
+--
+ALTER TABLE `characterobject`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `characterpj`
 --
 ALTER TABLE `characterpj`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `charactersperk`
@@ -365,7 +559,7 @@ ALTER TABLE `charactersperk`
 -- AUTO_INCREMENT de la tabla `object`
 --
 ALTER TABLE `object`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de la tabla `perk`
@@ -382,6 +576,13 @@ ALTER TABLE `user`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `characterobject`
+--
+ALTER TABLE `characterobject`
+  ADD CONSTRAINT `characterobject_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `characterobject_ibfk_2` FOREIGN KEY (`idObject`) REFERENCES `object` (`id`);
 
 --
 -- Filtros para la tabla `characterpj`
@@ -404,6 +605,12 @@ ALTER TABLE `characterskill`
 ALTER TABLE `charactersperk`
   ADD CONSTRAINT `charactersperk_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `characterpj` (`id`),
   ADD CONSTRAINT `charactersperk_ibfk_2` FOREIGN KEY (`idPerk`) REFERENCES `perk` (`id`);
+
+--
+-- Filtros para la tabla `weapon`
+--
+ALTER TABLE `weapon`
+  ADD CONSTRAINT `weapon_ibfk_1` FOREIGN KEY (`idObj`) REFERENCES `object` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
