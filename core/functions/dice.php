@@ -3,27 +3,27 @@
 function calculateDice($dice)
 {
 
-        $diceTwelve = "";
+    $diceTwelve = "";
 
-        if ($dice >= 12) {
-            $diceTwelve = floor($dice / 12) . "D12 ";
-            $dice = $dice % 12;
-            if($diceTwelve != 0){
-                $diceTwelve .= " + ";
-            }
+    if ($dice >= 12) {
+        $diceTwelve = floor($dice / 12) . "D12 ";
+        $dice = $dice % 12;
+        if ($diceTwelve != 0) {
+            $diceTwelve .= " + ";
         }
-        if ($dice == 0) {
-            return $diceTwelve;
-        }
-        if ($dice == 1) {
-            return $diceTwelve . "1 ";
-        }
+    }
+    if ($dice == 0) {
+        return $diceTwelve;
+    }
+    if ($dice == 1) {
+        return $diceTwelve . "1 ";
+    }
 
-        if ($dice % 2 == 0) {
-            return $diceTwelve . " 1D" . $dice ." ";
-        } else {
-            return $diceTwelve . " 1D" . ($dice-1) ." ";
-        }
+    if ($dice % 2 == 0) {
+        return $diceTwelve . " 1D" . $dice . " ";
+    } else {
+        return $diceTwelve . " 1D" . ($dice - 1) . " ";
+    }
 }
 
 function calculateModify($data)
@@ -68,36 +68,34 @@ function calculateModify($data)
                 }
             }
         }
-        $modifierArray[$j] = floor($modifier)<0? strval(floor($modifier)):"+".strval(floor($modifier));
+        $modifierArray[$j] = floor($modifier) < 0 ? strval(floor($modifier)) : "+" . strval(floor($modifier));
         $j++;
     }
-return $modifierArray;
+    return $modifierArray;
 }
 
-function calculatePerkAttribute($dataPj,$dataPerk)
+function calculatePerkAttribute($dataPj, $dataPerk)
 {
-    foreach($dataPerk as $attribute)
-    {
-        if($attribute["type"] == "Atribute"){
-            if($attribute["description"] == "Fuerza"){
+    foreach ($dataPerk as $attribute) {
+        if ($attribute["type"] == "Atribute") {
+            if ($attribute["description"] == "Fuerza") {
                 $dataPj["strengthBase"]++;
             }
-            if($attribute["description"] == "Destreza"){
+            if ($attribute["description"] == "Destreza") {
                 $dataPj["dexterityBase"]++;
             }
-            if($attribute["description"] == "Constitución"){
+            if ($attribute["description"] == "Constitución") {
                 $dataPj["constitutionBase"]++;
             }
-            if($attribute["description"] == "Inteligencia"){
+            if ($attribute["description"] == "Inteligencia") {
                 $dataPj["inteligenceBase"]++;
             }
-            if($attribute["description"] == "Sabiduría"){
+            if ($attribute["description"] == "Sabiduría") {
                 $dataPj["wisdomBase"]++;
             }
         }
     }
     return $dataPj;
-
 }
 
 function calculateDiceDmg($dataPerk)
@@ -111,28 +109,27 @@ function calculateDiceDmg($dataPerk)
         "modifierLife" => 0,
     ];
 
-    foreach($dataPerk as $dmg){
-        if($dmg["RDmg"] == "Cuerpo a cuerpo"){
+    foreach ($dataPerk as $dmg) {
+        if ($dmg["RDmg"] == "Cuerpo a cuerpo") {
             $dmgArray["modifierCc"]++;
         }
-        if($dmg["RDmg"] == "Arma"){
+        if ($dmg["RDmg"] == "Arma") {
             $dmgArray["modifierWeapon"]++;
         }
-        if($dmg["RDmg"] == "Distancia"){
+        if ($dmg["RDmg"] == "Distancia") {
             $dmgArray["modifierDistance"]++;
         }
-        if($dmg["RDmg"] == "Arcano"){
+        if ($dmg["RDmg"] == "Arcano") {
             $dmgArray["modifierArcanus"]++;
         }
-        if($dmg["RDmg"] == "Muerte"){
+        if ($dmg["RDmg"] == "Muerte") {
             $dmgArray["modifierDeath"]++;
         }
-        if($dmg["RDmg"] == "Vida"){
+        if ($dmg["RDmg"] == "Vida") {
             $dmgArray["modifierLife"]++;
         }
     }
     return $dmgArray;
-
 }
 
 function calculateDiceAtk($dataPerk)
@@ -146,86 +143,125 @@ function calculateDiceAtk($dataPerk)
         "modifierLife" => 0,
     ];
 
-    foreach($dataPerk as $atk){
-        if($atk["RAtk"] == "Cuerpo a cuerpo"){
+    foreach ($dataPerk as $atk) {
+        if ($atk["RAtk"] == "Cuerpo a cuerpo") {
             $atkArray["modifierCc"]++;
         }
-        if($atk["RAtk"] == "Arma"){
+        if ($atk["RAtk"] == "Arma") {
             $atkArray["modifierWeapon"]++;
         }
-        if($atk["RAtk"] == "Distancia"){
+        if ($atk["RAtk"] == "Distancia") {
             $atkArray["modifierDistance"]++;
         }
-        if($atk["RAtk"] == "Arcano"){
+        if ($atk["RAtk"] == "Arcano") {
             $atkArray["modifierArcanus"]++;
         }
-        if($atk["RAtk"] == "Muerte"){
+        if ($atk["RAtk"] == "Muerte") {
             $atkArray["modifierDeath"]++;
         }
-        if($atk["RAtk"] == "Vida"){
+        if ($atk["RAtk"] == "Vida") {
             $atkArray["modifierLife"]++;
         }
     }
     return $atkArray;
-
 }
 
-function MultiplierKi($dataPerk){
+function MultiplierKi($dataPerk)
+{
     $acount = 0;
-    foreach($dataPerk as $multi){
-        if($multi["type"] == "XKi"){
+    foreach ($dataPerk as $multi) {
+        if ($multi["type"] == "XKi") {
             $acount++;
         }
     }
     return calculateDice($acount);
 }
 
-function MultiplierMana($dataPerk){
+function MultiplierMana($dataPerk)
+{
     $acount = 0;
-    foreach($dataPerk as $multi){
-        if($multi["type"] == "XMana"){
+    foreach ($dataPerk as $multi) {
+        if ($multi["type"] == "XMana") {
             $acount++;
         }
     }
     return calculateDice($acount);
 }
 
-function acumulationDeath($dataPerk){
+function acumulationDeath($dataPerk)
+{
     $acount = 0;
-    foreach($dataPerk as $multi){
-        if($multi["type"] == "AcuDeath"){
+    foreach ($dataPerk as $multi) {
+        if ($multi["type"] == "AcuDeath") {
             $acount++;
         }
     }
     return calculateDice($acount);
 }
 
-function acumulationLife($dataPerk){
+function acumulationLife($dataPerk)
+{
     $acount = 0;
-    foreach($dataPerk as $multi){
-        if($multi["type"] == "AcuLife"){
+    foreach ($dataPerk as $multi) {
+        if ($multi["type"] == "AcuLife") {
             $acount++;
         }
     }
     return calculateDice($acount);
 }
 
-function rangeHeal($dataPerk){
+function rangeHeal($dataPerk)
+{
     $acount = 0;
-    foreach($dataPerk as $multi){
-        if($multi["type"] == "RHeal"){
+    foreach ($dataPerk as $multi) {
+        if ($multi["type"] == "RHeal") {
             $acount++;
         }
     }
     return calculateDice($acount);
 }
 
-function rangeNecro($dataPerk){
+function rangeNecro($dataPerk)
+{
     $acount = 0;
-    foreach($dataPerk as $multi){
-        if($multi["type"] == "RNecro"){
+    foreach ($dataPerk as $multi) {
+        if ($multi["type"] == "RNecro") {
             $acount++;
         }
     }
     return calculateDice($acount);
+}
+
+function calculateLife($data, $modifierArray, $increments)
+{
+
+    $baseLife = 0;
+    $finalLife = 0;
+    $baseLife = $data["constitutionBase"] + 10;
+    $finalLife = $modifierArray[2] * $data["level"] - 1;
+    foreach ($increments as $life) {
+        $finalLife = $finalLife + $life["incrementLife"];
+    }
+    $finalLife = $finalLife + $baseLife;
+    return $finalLife;
+}
+
+function calculateNextLevel($data)
+{
+    $lvl = 1000;
+    //Ant + lvlActual * (100+)
+    for ($i = 2; $i <= $data["level"]; $i++) {
+        $var = 0;
+        if ($i >= 20) {
+            $var = floor($i / 10) * 10;
+        }
+        $lvl = $lvl + ($i * (100 + $var));
+        if($i > 30){
+            $lvl = round($lvl/1000) * 1000;
+        }
+    }
+    if($data["level"] == 59){
+        $lvl = $lvl + 10000;
+    }
+    return $lvl;
 }

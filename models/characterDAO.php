@@ -18,33 +18,45 @@ class characterDAO
         include_once 'accesDB.php';
         $this->mysqli = ConnectDB();
     }
-    function getCharacterByUser ($idUser){
+    function getCharacterByUser($idUser)
+    {
 
         $sql = "SELECT * from characterpj WHERE idUser='$idUser'";
         $toRet = $this->mysqli->query($sql);
         return $toRet;
-
     }
 
-    function getCharacter (){
+    function getCharacter()
+    {
 
         $sql = "SELECT * from characterpj WHERE id=$this->id";
         $toRet = $this->mysqli->query($sql);
         return mysqli_fetch_assoc($toRet);
-
     }
 
-    function getPerks(){
+    function getPerks()
+    {
         $sql = "SELECT * FROM charactersPerk WHERE idUser=$this->id";
         $resultado = mysqli_query($this->mysqli, $sql);
-        if($resultado){
+        if ($resultado) {
             return $resultado;
         }
         return "Error";
     }
 
-    function setId($id){
-        $this->id = $id;
+    function getLife()
+    {
+        $sql = "SELECT * FROM characterlife WHERE id=$this->id";
+        $resultado = mysqli_query($this->mysqli, $sql);
+        if ($resultado) {
+            return $resultado;
+        }
+        return "Error";
     }
 
+
+    function setId($id)
+    {
+        $this->id = $id;
+    }
 }

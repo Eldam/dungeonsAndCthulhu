@@ -90,6 +90,41 @@ if (!IsAuthenticated()) {
             default:
                 break;
         }
+
+        switch ($_POST["typePrimal"]) {
+            case "1":
+                include_once '../models/primalDAO.php';
+                $primalObject = new primalDAO();
+                $primalObject->setIdObj($object->getId());
+                $primalObject->setStrength($_POST["primalData"]["strength"]);
+                $primalObject->setDexterity($_POST["primalData"]["dexterity"]);
+                $primalObject->setConstitution($_POST["primalData"]["constitution"]);
+                $primalObject->setInteligence($_POST["primalData"]["inteligence"]);
+                $primalObject->setWisdom($_POST["primalData"]["wisdom"]);
+                $primalObject->setCharisma($_POST["primalData"]["charisma"]);
+                $primalObject->setSynchronizationCost($_POST["primalData"]["synchronizationCost"]);
+                $primalObject->setTS($_POST["primalData"]["TS"]);
+                $primalObject->setMax($_POST["primalData"]["max"]);
+                $primalObject->setMin($_POST["primalData"]["min"]);
+                $primalObject->setRatk($_POST["primalData"]["Ratk"]);
+                $primalObject->setRdamage($_POST["primalData"]["Rdamage"]);
+                $primalObject->setEffect($_POST["primalData"]["effect"]);
+                $primalObject->setRTSalv($_POST["primalData"]["RTSalv"]);
+                $primalObject->setInitiative($_POST["primalData"]["initiative"]);
+                $primalObject->setSpeed($_POST["primalData"]["speed"]);
+                $primalObject->setDeathEnergy($_POST["primalData"]["deathEnergy"]);
+                $primalObject->setLifeEnergy($_POST["primalData"]["lifeEnergy"]);
+                $primalObject->setKiMulti($_POST["primalData"]["kiMulti"]);
+                $primalObject->setManaMulti($_POST["primalData"]["manaMulti"]);
+                $primalObject->setRAtkSpell($_POST["primalData"]["rAtkSpell"]);
+                $primalObject->setRDmgSpell($_POST["primalData"]["rDmgSpell"]);
+                $primalObject->createObject();
+                break;
+            case "0":
+                break;
+            default:
+                break;
+        }
         $response = array("status" => true, "mensaje" => "Se ha creado correctamente");
         echo json_encode($response);
         exit;

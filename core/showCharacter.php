@@ -45,6 +45,11 @@ else {
     $inteligenceSkills = $characterSkillDAO->getCharacterSkillByInteligence();
     $wisdomSkills = $characterSkillDAO->getCharacterSkillByWisdom();
     $charismaSkills = $characterSkillDAO->getCharacterSkillByCharisma();
+    //CALCULAMOS VIDA
+    $increments = $characterDAO->getLife();
+    $_SESSION["life"] = calculateLife($data,$modifierArray,$increments);
+    //CALCULAMOS EXPERIENCIA NECESARIA PARA SUBIR DE NIVEL
+    $_SESSION["nextLevel"] = calculateNextLevel($data);
 
 
     //CREAMOS LAS VISTAS

@@ -37,8 +37,9 @@
                         <span class="user-role">Raza: <span class="text-ceruleo"><?php echo $_SESSION["actualCharacterRaze"] ?></span></span>
                         <span class="user-role">Genero: <span class="text-ceruleo"><?php echo $_SESSION["actualCharacterGender"] ?></span></span>
                         <span class="user-role">Nivel: <span class="text-ceruleo"><?php echo $_SESSION["actualCharacterLvl"] ?></span></span>
+                        <span class="user-role">Vida: <span class="text-danger"><?php echo $_SESSION["life"] ?>\<?php echo $_SESSION["life"] ?></span></span>
                         <span class="user-status">
-                            <span>Experiencia Actual: </span><span class="text-aqua"><?php echo $_SESSION["actualCharacterExp"] ?></span>
+                            <span>Experiencia: </span><span class="text-aqua"><?php echo $_SESSION["actualCharacterExp"] ?>\<b class="text-warning"><?php echo $_SESSION["nextLevel"]  ?></b></span>
                         </span>
                     </div>
                 </div>

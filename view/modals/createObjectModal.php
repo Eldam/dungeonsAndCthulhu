@@ -374,7 +374,7 @@
                         <div class="col-4">
                             <label for="effect" class="col-form-label">Efecto</label>
                             <div class="col-12">
-                                <input type="number" class="form-control" id="effect">
+                                <textarea type="number" class="form-control" id="effect"></textarea>
                             </div>
                         </div>
                         <div class="col-4">
