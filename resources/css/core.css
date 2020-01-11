@@ -1,39 +1,50 @@
 body, html {
-    height: 100%;
-  }
-  .bg {
-    /* The image used */
-    /*background-image: url("../img/wallDungeon2.jpg");
+  height: 100%;
+}
+
+.bg {
+  /* The image used */
+  /*background-image: url("../img/wallDungeon2.jpg");
     background-color: #ff0000;
     opacity: 0.9;*/
-    width: 100%;
+  width: 100%;
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-    /* Full height */
-    height: 100%;
-  
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+#avatar {
+  min-width: 200px;
+  min-height: 300px;
+  max-width: 400px!important;
+  max-height: 400px!important;
+}
 
-  #avatar{
-    min-width: 200px;
-    min-height: 300px;
-    max-width: 400px!important;
-    max-height: 400px!important;
-  }
+.hide {
+  display: none!important;
+}
 
-  .hide{
-    display: none!important;
-  }
+.modal-content {
+  background-color: #3a3f48!important;
+  color: #fff;
+}
 
-  .modal-content{
-    background-color: #3a3f48!important;
-    color: #fff;
-    
-  }
-  input, .custom-file-label, select, textarea { 
-    color: #000!important;
-    background: #bec2ca!important; 
-  }
+input, .custom-file-label, select, textarea {
+  color: #000!important;
+  background: #bec2ca!important;
+}
+
+.cardPrimal {
+  width: 250px;
+  transition: 2s;
+  box-shadow: 0 4px 8px 0 rgba(255, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 0, 0, 0.19);
+}
+
+.cardPrimal:hover{
+  width: 250px;
+  transition: 1s;
+  box-shadow: 0 8px 16px 0 rgba(255, 0, 0, 0.842), 0 12px 40px 0 rgba(255, 0, 0, 0.842);
+}

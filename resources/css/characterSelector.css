@@ -1,0 +1,10 @@
+body{
+    margin:0;
+    background: url("../img/bgcs.png")center !important;
+    font-family: 'Creepster', cursive;
+    height: 100% !important;
+}
+
+#cardText{
+    font-family: 'Coming Soon', cursive;
+}

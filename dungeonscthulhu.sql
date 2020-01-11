@@ -39,7 +39,6 @@ GRANT USAGE ON *.* TO `userDNC`@`localhost` REQUIRE NONE WITH MAX_QUERIES_PER_HO
 GRANT ALL PRIVILEGES ON `dungeonscthulhu`.* TO `userDNC`@`localhost` WITH GRANT OPTION;
 --
 
-
 CREATE TABLE `accesory` (
   `idObj` int(11) NOT NULL,
   `cost` int(11) DEFAULT NULL,
@@ -59,6 +58,36 @@ CREATE TABLE `armor` (
   `ca` int(11) NOT NULL,
   `type` enum('helmet','boots','gauntlets','shoulderPads','pants','armband','clothes','cloak') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `characterlife`
+--
+
+CREATE TABLE `characterlife` (
+  `idAuto` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `incrementLife` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `characterlife`
+--
+
+INSERT INTO `characterlife` (`idAuto`, `id`, `incrementLife`) VALUES
+(1, 1, 3),
+(2, 1, 3),
+(3, 1, 4),
+(4, 1, 4),
+(5, 1, 3),
+(6, 1, 4),
+(7, 1, 4),
+(8, 1, 4),
+(9, 1, 4),
+(10, 1, 4),
+(11, 1, 3),
+(12, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -244,6 +273,10 @@ CREATE TABLE `object` (
   `primal` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `object`
+--
+
 -- --------------------------------------------------------
 
 --
@@ -328,6 +361,7 @@ CREATE TABLE `primal` (
   `rAtkSpell` int(11) DEFAULT NULL,
   `rDmgSpell` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 -- --------------------------------------------------------
 
@@ -449,6 +483,13 @@ ALTER TABLE `armor`
   ADD PRIMARY KEY (`idObj`);
 
 --
+-- Indices de la tabla `characterlife`
+--
+ALTER TABLE `characterlife`
+  ADD PRIMARY KEY (`idAuto`),
+  ADD KEY `id` (`id`);
+
+--
 -- Indices de la tabla `characterobject`
 --
 ALTER TABLE `characterobject`
@@ -538,6 +579,12 @@ ALTER TABLE `weapon`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `characterlife`
+--
+ALTER TABLE `characterlife`
+  MODIFY `idAuto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT de la tabla `characterobject`
 --
 ALTER TABLE `characterobject`
@@ -559,7 +606,7 @@ ALTER TABLE `charactersperk`
 -- AUTO_INCREMENT de la tabla `object`
 --
 ALTER TABLE `object`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `perk`
@@ -576,6 +623,12 @@ ALTER TABLE `user`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `characterlife`
+--
+ALTER TABLE `characterlife`
+  ADD CONSTRAINT `characterlife_ibfk_1` FOREIGN KEY (`id`) REFERENCES `characterpj` (`id`);
 
 --
 -- Filtros para la tabla `characterobject`

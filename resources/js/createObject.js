@@ -55,7 +55,7 @@ function uploadObject() {
         showError("Campos Incorrectos, por favor revisa el formulario.");
         return;
     }
-
+    // var formData = new FormData();
     var data = {
         name: $("#name").val(),
         description: $("#description").val(),
@@ -160,7 +160,7 @@ function uploadObject() {
         data: data,
         type: "POST",
         success: function (respuesta) {
-            try{
+            try {
                 respuesta = JSON.parse(respuesta);
                 if (respuesta.status) {
                     showSucces(respuesta["mensaje"]);
@@ -168,8 +168,8 @@ function uploadObject() {
                 } else {
                     showError(respuesta["mensaje"]);
                 }
-                
-            }catch{
+
+            } catch{
                 showError("Se ha producido un error");
             }
         },
@@ -183,12 +183,19 @@ function uploadObject() {
 function showError(text) {
     $("#dangerAlert").text(text);
     $("#dangerAlert").removeClass("hide");
-    setTimeout(function(){$("#dangerAlert").addClass("hide");}, 5000);
+    setTimeout(function () { $("#dangerAlert").addClass("hide"); }, 5000);
 }
 
 
 function showSucces(text) {
     $("#succesAlert").text(text);
     $("#succesAlert").removeClass("hide");
-    setTimeout(function(){$("#succesAlert").addClass("hide");}, 5000);
+    $('#createObjectModal').modal('hide');
+    $("input").each(function () {
+        $(this).val("")
+    });
+    $("textarea").each(function () {
+        $(this).val("")
+    });
+    setTimeout(function () { $("#succesAlert").addClass("hide"); }, 5000);
 }
