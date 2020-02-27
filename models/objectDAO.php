@@ -255,7 +255,7 @@ class objectDAO
 
     /**
      * Get the value of typeObject
-     */ 
+     */
     public function getTypeObject()
     {
         return $this->typeObject;
@@ -265,7 +265,7 @@ class objectDAO
      * Set the value of typeObject
      *
      * @return  self
-     */ 
+     */
     public function setTypeObject($typeObject)
     {
         $this->typeObject = $typeObject;
@@ -275,7 +275,7 @@ class objectDAO
 
     /**
      * Get the value of primal
-     */ 
+     */
     public function getPrimal()
     {
         return $this->primal;
@@ -285,7 +285,7 @@ class objectDAO
      * Set the value of primal
      *
      * @return  self
-     */ 
+     */
     public function setPrimal($primal)
     {
         $this->primal = $primal;
@@ -334,4 +334,25 @@ class objectDAO
         $stmt->close();
     }
 
+    function getAllObjects($page, $limitPage)
+    {
+        //         SELECT * FROM object LEFT JOIN accesory ON object.id = accesory.idObj LEFT JOIN armor ON object.id = armor.idObj LEFT JOIN food ON object.id = food.idObj
+        // LEFT JOIN magicstone ON object.id = magicstone.idObj LEFT JOIN potion ON object.id = potion.idObj LEFT JOIN primal ON object.id = primal.idObj LEFT JOIN weapon ON object.id = weapon.idObj ORDER BY object.id;
+
+        $sql = "SELECT * FROM object LEFT JOIN accesory ON object.id = accesory.idObj LEFT JOIN armor ON object.id = armor.idObj LEFT JOIN food ON object.id = food.idObj
+                                                                                    LEFT JOIN magicstone ON object.id = magicstone.idObj LEFT JOIN potion ON object.id = potion.idObj 
+                                                                                    LEFT JOIN primal ON object.id = primal.idObj LEFT JOIN weapon ON object.id = weapon.idObj ORDER BY object.id";
+        if (is_numeric($page)) {
+            $sql = $sql . " Limit " . $page . ", " . $limitPage;
+        }
+        $resultado = mysqli_query($this->mysqli, $sql);
+        if ($resultado) {
+            $rows = array();
+            while ($r = mysqli_fetch_assoc($resultado)) {
+                $rows[] = $r;
+            }
+            return $rows;
+        }
+        return "Error";
+    }
 }

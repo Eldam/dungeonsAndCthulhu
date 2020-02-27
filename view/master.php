@@ -15,9 +15,6 @@
 </head>
 
 <body>
-    <h1 class="title">
-      Dungeon & Cthulhu - Master
-    </h1>
     
     <br>
     <br>

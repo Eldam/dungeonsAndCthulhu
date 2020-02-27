@@ -93,7 +93,7 @@
                             <label for="image" class="col-form-label">Imagen</label>
                             <div class="col-12">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="fileUpload">
+                                    <input type="file" class="custom-file-input" id="file">
                                     <label class="custom-file-label" id="textFile" for="fileUpload">Choose file</label>
                                 </div>
                             </div>

@@ -5,6 +5,7 @@ class UserDAO
     var $mysqli;
     var $user;
     var $pass;
+    var $typeUser;
 
 
     /**
@@ -42,6 +43,30 @@ class UserDAO
     public function setPass($pass)
     {
         $this->pass = $pass;
+
+        return $this;
+    }
+
+    public function getUserType($idUser)
+    {
+        $sql = "SELECT typeUser FROM user WHERE id='$idUser'";
+        $resultado = mysqli_query($this->mysqli, $sql);
+        $tupla = $resultado->fetch_array();
+        return $this->$tupla["typeUSer"];
+    }
+
+    public function getUserTypeSaved()
+    {
+        return $this->typeUser;
+    }
+    /**
+     * Set the value of pass
+     *
+     * @return  self
+     */
+    public function setUserType($typeUser)
+    {
+        $this->typeUser = $typeUser;
 
         return $this;
     }
@@ -85,13 +110,14 @@ class UserDAO
         } else {
             $this->pass = md5($this->pass);
             $datetime = date('Y-m-d');
-            $sql = "INSERT INTO user(`name`,`password`,`createDate`,`updateDate`) VALUES (?,?,?,?)";
+            $sql = "INSERT INTO user(`name`,`password`,`typeUser`,`createDate`,`updateDate`) VALUES (?,?,?,?,?)";
             $stmt = $this->mysqli->prepare($sql);
             if($stmt){      
                 $stmt->bind_param(
-                    "ssss",
+                    "sssss",
                     $this->user,
                     $this->pass,
+                    $this->typeUser,
                     $datetime,
                     $datetime
                 );
@@ -99,7 +125,7 @@ class UserDAO
                 $stmt->close();
                 return true;
             }else{
-                return false;
+                return "Error al crear usuario";
             }
         }
     }

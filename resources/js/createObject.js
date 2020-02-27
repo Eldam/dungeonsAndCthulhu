@@ -17,11 +17,11 @@ $(function () {
     });
 
 
-    $("#fileUpload").change(function () {
-        if ($("#fileUpload").val() == "") {
+    $("#file").change(function () {
+        if ($("#file").val() == "") {
             $("#textFile").val("Elige una imagen");
         } else {
-            var filename = $("#fileUpload").val().split('\\');
+            var filename = $("#file").val().split('\\');
             $("#textFile").text(filename[filename.length - 1]);
         }
     });
@@ -163,7 +163,7 @@ function uploadObject() {
             try {
                 respuesta = JSON.parse(respuesta);
                 if (respuesta.status) {
-                    showSucces(respuesta["mensaje"]);
+                    uploadFile(respuesta.id,respuesta);
                     $("#createObjectModal").modal('hide');
                 } else {
                     showError(respuesta["mensaje"]);
@@ -198,4 +198,39 @@ function showSucces(text) {
         $(this).val("")
     });
     setTimeout(function () { $("#succesAlert").addClass("hide"); }, 5000);
+}
+
+function uploadFile(id,respuesta) {
+
+    var fd = new FormData();
+    if ($("#file")[0].files.length > 0) {
+
+        var files = $('#file')[0].files[0];
+
+        fd.append('file', files);
+        fd.append('exist', true);
+        fd.append('id', id);
+        $.ajax({
+            url: './createObject.php',
+            type: 'post',
+            data: fd,
+            contentType: false,
+            processData: false,
+            success: function (respuesta) {
+                try {
+                    respuesta = JSON.parse(respuesta);
+                    if (respuesta.status) {
+                        showSucces(respuesta["mensaje"]);
+                    } else {
+                        showError(respuesta["mensaje"]);
+                    }
+
+                } catch{
+                    showError("Se ha producido un error");
+                }
+            },
+        });
+    }else{
+        showSucces(respuesta["mensaje"]);
+    }
 }

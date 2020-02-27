@@ -28,7 +28,7 @@ body, html {
 }
 
 .modal-content {
-  background-color: #3a3f48!important;
+  background-color: #2f333a!important;
   color: #fff;
 }
 
@@ -43,8 +43,14 @@ input, .custom-file-label, select, textarea {
   box-shadow: 0 4px 8px 0 rgba(255, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 0, 0, 0.19);
 }
 
-.cardPrimal:hover{
+.cardPrimal:hover {
   width: 250px;
   transition: 1s;
   box-shadow: 0 8px 16px 0 rgba(255, 0, 0, 0.842), 0 12px 40px 0 rgba(255, 0, 0, 0.842);
+}
+
+#attPos:hover {
+  transition: 1s;
+  color: rgb(38, 247, 205);
+  text-shadow: 0 8px 16px 0 rgba(62, 255, 207, 0.842), 0 12px 40px 0 rgba(62, 255, 207, 0.842);
 }

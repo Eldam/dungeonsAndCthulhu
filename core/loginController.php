@@ -15,20 +15,38 @@ if (!IsAuthenticated()) {
                 $userDAO = new userDAO();
                 $userDAO->setUser($_POST["userCreate"]);
                 $userDAO->setPass($_POST["passCreate"]);
+                $userDAO->setUserType($_POST["typeUser"]);
                 $ok = $userDAO->createUser();
-                if ($ok) {
+                if (!is_string($ok)) {
                     $response = $userDAO->login($_POST["userCreate"], $_POST["passCreate"]);
                     if (!is_string($response)) {
-                        $_SESSION["actualUser"] = $userDAO->idUser($_POST["userCreate"]);
-                        header('Location: ./characterSelector.php');
-                        exit();
+                        switch ($_POST["typeUser"]) {
+                            case "PLAYER":
+                                $_SESSION["actualUser"] = $userDAO->idUser($_POST["userCreate"]);
+                                $_SESSION["typeUser"] = "PLAYER";
+                                header('Location: ./characterSelector.php');
+                                exit();
+                                break;
+                            case "MASTER":
+                                $_SESSION["actualUser"] = $userDAO->idUser($_POST["userCreate"]);
+                                $_SESSION["typeUser"] = "MASTER";
+                                header('Location: ./showMasterIndex.php');
+                                exit();
+                                break;
+                            case "VIEWER":
+                                $_SESSION["actualUser"] = $userDAO->idUser($_POST["userCreate"]);
+                                $_SESSION["typeUser"] = "VIEWER";
+                                header('Location: ./characterSelector.php');
+                                exit();
+                                break;
+                        }
                     } else {
                         $_SESSION["message"] = $response;
                         header('Location: ../index.php');
                         exit();
                     }
                 } else {
-                    $_SESSION["message"] = "No se ha podido crear al usuario";
+                    $_SESSION["message"] = $ok . "No se ha podido crear al usuario -> " . $_POST["userCreate"] . " del tipo -> " . $userDAO->getUserTypeSaved();
                     header('Location: ../index.php');
                     exit();
                 }
@@ -45,14 +63,20 @@ if (!IsAuthenticated()) {
                 $response = $userDAO->login($_POST["user"], $_POST["password"]);
                 if (!is_string($response)) {
                     $_SESSION["actualUser"] = $userDAO->idUser($_POST["user"]);
-
-                    if (isset($_COOKIE["actualCharacterId"])) {
-                        $_SESSION["actualCharacterId"] = $_COOKIE["actualCharacterId"];
-                        header("Location: ./showCharacter.php");
+                    if ($userDAO->getUserType($_SESSION["actualUser"]) == "MASTER") {
+                        $_SESSION["typeUser"] = "MASTER";
+                        $_SESSION["masterName"] = $_POST["user"];
+                        header('Location: ./showMasterIndex.php');
                         exit();
                     } else {
-                        header('Location: ./characterSelector.php');
-                        exit();
+                        if (isset($_COOKIE["actualCharacterId"])) {
+                            $_SESSION["actualCharacterId"] = $_COOKIE["actualCharacterId"];
+                            header("Location: ./showCharacter.php");
+                            exit();
+                        } else {
+                            header('Location: ./characterSelector.php');
+                            exit();
+                        }
                     }
                 } else {
                     $_SESSION["message"] = $response;

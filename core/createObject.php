@@ -9,6 +9,36 @@ if (!IsAuthenticated()) {
 } else {
 
     $statusOk = true;
+
+    if (isset($_POST["exist"])) {
+        if (isset($_FILES["file"])) {
+
+            $target_dir = "../resources/img/object/" . $_POST["id"] . "/";
+            if(!is_dir($target_dir)){
+                mkdir($target_dir);
+            }
+            $target_file = $target_dir . basename($_FILES["file"]["name"]);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+            if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+                $response = array("status" => true, "mensaje" => "Se ha creado correctamente");
+                echo json_encode($response);
+                exit;
+            } else {
+                $response = array("status" => false, "mensaje" => "Se ha producido un error");
+                echo json_encode($response);
+                exit;
+            }
+        } else {
+            $response = array("status" => false, "mensaje" => "Se ha producido un error");
+            echo json_encode($response);
+            exit;
+        }
+    }
+
+
+
     try {
 
         include_once '../models/objectDAO.php';
@@ -125,7 +155,7 @@ if (!IsAuthenticated()) {
             default:
                 break;
         }
-        $response = array("status" => true, "mensaje" => "Se ha creado correctamente");
+        $response = array("status" => true, "mensaje" => "Se ha creado correctamente", "id" => $object->getId());
         echo json_encode($response);
         exit;
     } catch (Exception $e) {

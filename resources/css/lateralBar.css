@@ -126,6 +126,7 @@
   
   .sidebar-content {
     max-height: calc(100% - 30px);
+    box-shadow: 10px 10px 50px #212429;
     height: calc(100% - 30px);
     overflow-y: auto;
     position: relative;
@@ -427,7 +428,7 @@
   .chiller-theme .sidebar-wrapper .sidebar-brand>a,
   .chiller-theme .sidebar-wrapper .sidebar-menu ul li a,
   .chiller-theme .sidebar-footer>a {
-      color: #818896;
+      color: #f5f5f5;
   }
   
   .chiller-theme .sidebar-wrapper .sidebar-menu ul li:hover>a,
@@ -435,7 +436,7 @@
   .chiller-theme .sidebar-wrapper .sidebar-header .user-info,
   .chiller-theme .sidebar-wrapper .sidebar-brand>a:hover,
   .chiller-theme .sidebar-footer>a:hover i {
-      color: #b8bfce;
+      color: #00dcff;
   }
   
   .page-wrapper.chiller-theme.toggled #close-sidebar {

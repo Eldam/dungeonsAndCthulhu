@@ -32,17 +32,10 @@
                 </div>
                 <div class="sidebar-header">
                     <div class="user-pic">
-                        <img class="img-responsive img-rounded" id="img-lateral-bar" src="../resources/img/avatar/<?= $_SESSION["actualCharacterId"] ?>.jpg" alt="User picture">
+                        <!-- <img class="img-responsive img-rounded" id="img-lateral-bar" src="../resources/img/avatar/<= $_SESSION["actualCharacterId"] ?>.jpg" alt="User picture"> -->
                     </div>
                     <div class="user-info">
-                        <h4 class="user-name" style="color: #7ebcff"><?php echo $_SESSION["actualCharacterName"] ?></h4>
-                        <span class="user-role" style="font-size: 15px">Raza: <span class="text-ceruleo"><?php echo $_SESSION["actualCharacterRaze"] ?></span></span>
-                        <span class="user-role" style="font-size: 15px">Genero: <span class="text-ceruleo"><?php echo $_SESSION["actualCharacterGender"] ?></span></span>
-                        <span class="user-role" style="font-size: 15px">Nivel: <span class="text-ceruleo"><?php echo $_SESSION["actualCharacterLvl"] ?></span></span>
-                        <span class="user-role" style="font-size: 15px">Vida: <span class="text-danger"><?php echo $_SESSION["life"] ?>\<?php echo $_SESSION["life"] ?></span></span>
-                        <span class="user-status">
-                            <span style="font-size: 15px">Experiencia: </span><span class="text-aqua" style="font-size: 12px"><?php echo $_SESSION["actualCharacterExp"] ?>\<b class="text-warning" style="font-size: 15px"><?php echo $_SESSION["nextLevel"]  ?></b></span>
-                        </span>
+                        <h4 class="user-name" style="color: #7ebcff"><?php echo $_SESSION["masterName"] ?></h4>
                     </div>
                 </div>
                 <!-- menu personaje -->

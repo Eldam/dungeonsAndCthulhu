@@ -9,7 +9,7 @@ if (IsAuthenticated()) {
 <html>
 
 <head>
-    <title>Dungeons & Cthulhu</title>
+    <title>SacredLaws</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -66,6 +66,14 @@ if (IsAuthenticated()) {
                             <div class="group">
                                 <label for="passRepeat" class="label">Repeat Password</label>
                                 <input id="passRepeat" type="password" name="passRepeat" class="input" data-type="password" require>
+                            </div>
+                            <div class="group">
+                                <label for="typeUser">Type Player</label>
+                                <select id="typeUser" name="typeUser" class="form-select">
+                                    <option value="PLAYER">Player</option>
+                                    <option value="MASTER">Master</option>
+                                    <option value="VIEWER">viewer</option>
+                                </select>
                             </div>
                             <div class="group">
                                 <!-- <input type="submit" class="button" value="Sign Up"> -->

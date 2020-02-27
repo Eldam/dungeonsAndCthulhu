@@ -10,6 +10,7 @@ if (!IsAuthenticated()) {
 }
 else{
 
+    // $primal=isset($_POST["primal"])?$_POST["primal"]:"";
 
 
     //CREAMOS LAS VISTAS
