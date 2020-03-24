@@ -43,16 +43,24 @@ class UserDAO
     public function setPass($pass)
     {
         $this->pass = $pass;
-
+        
         return $this;
+    }
+    
+    function idUser($user)
+    {
+        $sql = "SELECT * FROM user WHERE name='$user'";
+        $resultado = mysqli_query($this->mysqli, $sql);
+        $tupla = $resultado->fetch_array();
+        return $tupla['id'];
     }
 
     public function getUserType($idUser)
     {
-        $sql = "SELECT typeUser FROM user WHERE id='$idUser'";
+        $sql = "SELECT * FROM user WHERE id='$idUser'";
         $resultado = mysqli_query($this->mysqli, $sql);
         $tupla = $resultado->fetch_array();
-        return $this->$tupla["typeUSer"];
+        return $tupla["typeUser"];
     }
 
     public function getUserTypeSaved()
@@ -94,13 +102,6 @@ class UserDAO
         }
     }
 
-    function idUser($user)
-    {
-        $sql = "SELECT * FROM user WHERE name='$user'";
-        $resultado = mysqli_query($this->mysqli, $sql);
-        $tupla = $resultado->fetch_array();
-        return $tupla['id'];
-    }
     function createUser()
     {
         $sql = "SELECT * FROM user WHERE name='$this->user'";

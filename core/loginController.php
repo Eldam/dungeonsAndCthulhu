@@ -62,7 +62,9 @@ if (!IsAuthenticated()) {
                 $userDAO = new userDAO();
                 $response = $userDAO->login($_POST["user"], $_POST["password"]);
                 if (!is_string($response)) {
+                    
                     $_SESSION["actualUser"] = $userDAO->idUser($_POST["user"]);
+
                     if ($userDAO->getUserType($_SESSION["actualUser"]) == "MASTER") {
                         $_SESSION["typeUser"] = "MASTER";
                         $_SESSION["masterName"] = $_POST["user"];
@@ -70,10 +72,12 @@ if (!IsAuthenticated()) {
                         exit();
                     } else {
                         if (isset($_COOKIE["actualCharacterId"])) {
+                            $_SESSION["typeUser"] = "PLAYER";
                             $_SESSION["actualCharacterId"] = $_COOKIE["actualCharacterId"];
                             header("Location: ./showCharacter.php");
                             exit();
                         } else {
+                            $_SESSION["typeUser"] = "PLAYER";
                             header('Location: ./characterSelector.php');
                             exit();
                         }
@@ -95,13 +99,24 @@ if (!IsAuthenticated()) {
         exit();
     }
 } else {
-    if (isset($_COOKIE["actualCharacterId"])) {
-        $_SESSION["actualCharacterId"] = $_COOKIE["actualCharacterId"];
-        header("Location: ../core/showCharacter.php");
-        exit();
-    } else {
-        header('Location: ../core/characterSelector.php');
-        exit();
+    if (isset($_SESSION["typeUser"])) {
+        if ($_SESSION["typeUser"] == "MASTER") {
+            header("Location: ../core/showMasterIndex.php");
+            exit();
+        }
+        if ($_SESSION["typeUser"] == "PLAYER") {
+            if (isset($_COOKIE["actualCharacterId"])) {
+                $_SESSION["actualCharacterId"] = $_COOKIE["actualCharacterId"];
+                header("Location: ../core/showCharacter.php");
+                exit();
+            } else {
+                header('Location: ../core/characterSelector.php');
+                exit();
+            }
+        }
+        if ($_SESSION["typeUser"] == "VIEWER") {
+            exit();
+        }
     }
 }
 //esta autenticado

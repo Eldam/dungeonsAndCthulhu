@@ -23,7 +23,7 @@ else {
     }
     //CREAMOS LA COOKIE
 
-    setcookie('actualCharacterId',$_SESSION['actualCharacterId'],['samesite' => 'Lax'],time()+2678400);
+    setcookie('actualCharacterId',$_SESSION['actualCharacterId'],time()+2678400);
     //COGEMOS DATOS
 
     $characterDAO = new characterDAO();

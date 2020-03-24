@@ -47,11 +47,11 @@
 
 
         </div>
-        <button type="button" class="btn btn-danger btn-lg btn-block fixed-bottom">
+        <a type="button" class="btn btn-danger btn-lg btn-block fixed-bottom" href="../core/logOut.php">
             <a href="../core/logOut.php">
                 <i class="fa fa-power-off" style="color: white"></i>
             </a>
-        </button>
+        </a>
     </div>
 
 

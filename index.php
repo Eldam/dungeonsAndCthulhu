@@ -3,7 +3,22 @@ session_start();
 include_once './core/functions/authentications.php';
 
 if (IsAuthenticated()) {
-    header('Location: ./core/characterSelector.php');
+    if (isset($_SESSION["typeUser"])) {
+        switch ($_SESSION["typeUser"]) {
+            case "PLAYER":
+                header('Location: ./core/characterSelector.php');
+                exit();
+                break;
+            case "MASTER":
+                header('Location: ./core/showMasterIndex.php');
+                exit();
+                break;
+            case "VIEWER":
+                header('Location: ./core/showMasterIndex.php');
+                exit();
+                break;
+        }
+    }
 }
 ?>
 <html>

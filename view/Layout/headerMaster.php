@@ -7,11 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/v4-shims.css">
+    <script src="https://kit.fontawesome.com/870d695b00.js"></script>
     <link href="../resources/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css'>
     <link rel="stylesheet" href="../resources/css/lateralBar.css">
     <link rel="stylesheet" href="../resources/css/core.css">
+    <link rel="stylesheet" href="../resources/styles.css">
     <link href="../resources/css/custom.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../resources/js/sound.js"></script>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.6/css/all.css'>
+    <script src="../resources/js/master.js"></script>
 
 </head>
 
@@ -24,7 +31,7 @@
         <nav id="sidebar" class="sidebar-wrapper">
             <div class="sidebar-content">
                 <div class="sidebar-brand" style="font-size: 18px">
-                    <a href="../index.php" style="color:goldenrod"><i class="fas fa-dragon"></i> Sacred <span style="color:red;">Laws <i class="fas fa-gavel"></i></span>          
+                    <a href="../index.php" style="color:goldenrod"><i class="fas fa-dragon"></i> Sacred <span style="color:red;">Laws <i class="fas fa-gavel"></i></span>
                     </a>
                     <div id="close-sidebar">
                         <i class="fas fa-times"></i>
@@ -32,7 +39,7 @@
                 </div>
                 <div class="sidebar-header">
                     <div class="user-pic">
-                        <!-- <img class="img-responsive img-rounded" id="img-lateral-bar" src="../resources/img/avatar/<= $_SESSION["actualCharacterId"] ?>.jpg" alt="User picture"> -->
+                        <img class="img-responsive img-rounded" id="img-lateral-bar" src="../resources/img/user/<?= $_SESSION["actualUser"] ?>.jpg" alt="User picture">
                     </div>
                     <div class="user-info">
                         <h4 class="user-name" style="color: #7ebcff"><?php echo $_SESSION["masterName"] ?></h4>
@@ -42,13 +49,12 @@
                 <div class="sidebar-menu">
                     <ul>
                         <li class="header-menu">
-                            <span style="color: white">Menú Personaje</span>
+                            <span style="color: white">Menú Master</span>
                         </li>
                         <li class="sidebar-dropdown">
                             <a href="#">
                                 <i class="far fa-user"></i>
-                                <span>Mostrar personaje</span>
-                                <span class="badge badge-pill badge-warning">New</span>
+                                <span>Mostrar grupos (AUN NO)</span>
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>
@@ -73,7 +79,7 @@
                         <li class="sidebar-dropdown">
                             <a href="#">
                                 <i class="fas fa-book-open"></i>
-                                <span>Habilidades</span>
+                                <span>Habilidades (AUN NO)</span>
                                 <!-- <span class="badge badge-pill badge-danger">3</span> -->
                             </a>
                             <div class="sidebar-submenu">
@@ -92,7 +98,7 @@
                         <li class="sidebar-dropdown">
                             <a href="#">
                                 <i class="fas fa-magic"></i>
-                                <span>Perks</span>
+                                <span>Perks (AUN NO)</span>
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>
@@ -157,7 +163,7 @@
                         </li>
                         <li class="sidebar-dropdown">
                             <a href="#">
-                            <i class="fas fa-store"></i>
+                                <i class="fas fa-store"></i>
                                 <span>Tienda</span>
                             </a>
                             <div class="sidebar-submenu">
@@ -209,15 +215,12 @@
             <div class="sidebar-footer">
                 <a href="#">
                     <i class="fa fa-bell"></i>
-                    <span class="badge badge-pill badge-warning notification">3</span>
                 </a>
                 <a href="#">
                     <i class="fa fa-envelope"></i>
-                    <span class="badge badge-pill badge-success notification">7</span>
                 </a>
                 <a href="#">
                     <i class="fa fa-cog"></i>
-                    <span class="badge-sonar"></span>
                 </a>
                 <a href="../core/logOut.php">
                     <i class="fa fa-power-off"></i>
