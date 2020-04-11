@@ -21,3 +21,5 @@
     include_once "../view/master.php";
     ?>
 </div>
+
+<script src="../resources/js/sound.js"></script>
